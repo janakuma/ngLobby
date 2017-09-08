@@ -1,0 +1,48 @@
+﻿@import './bro.variable.scss';
+
+.inviteTeam {
+    @include calc_top(250vh);
+    @include calc_left(36vh);
+    @include calc_w(326vh);
+
+    position: absolute;
+    .tabBlock {
+        display: flex;
+
+        button {
+            @include calc_h(28vh);
+            @include calc_fz(13vh);
+            flex: 1; border: 1px solid #898989; border-bottom: 1px solid $point_color;
+            color: #b0b0b0;
+
+            &:hover,
+            &.on {
+                position: relative;
+                border-color: $point-color;
+                background-color: $bg_black5;
+                border-bottom-color: transparent;
+                color: #fff;
+            }
+        }
+    }
+
+    .invite-message {
+        @include calc_pd(13vh,20vh,13vh,20vh);
+
+        border-top: none;
+        background-color: $bg_black5;
+        .profile {
+            @include calc_mg(0,20vh,0,0);
+            float: left; border-color: $point-color;
+        }
+
+        p {
+            @include calc_fz(16vh);
+        }
+    }
+
+    .group-btn {
+        display: flex; border-top: none;
+        button {margin: 0; flex: 1;}
+    }
+}

@@ -1,0 +1,248 @@
+﻿@import './bro.variable.scss';
+
+$img: '/dist/images/userinfo';
+
+/* USERINFO */
+.bro-userinfo * {vertical-align: middle;}
+.bro-userinfo {
+	@include textShadow();
+	@include calc_fz(20vh);
+	float: right;
+
+	.block {
+		@include calc_mg(0,30vh,0,0);
+		@include calc_lh(80vh);
+		float: left;
+		&:last-child {margin-right: 0;}
+	}
+
+	.userCash {
+        &:before {
+            background: url('#{$img_common}/broCash.png') 0 0 no-repeat;
+            background-size: cover;
+		}
+
+		button {
+			@include calc_w(16vh);
+			@include calc_h(16vh);
+			@include calc_mg(0,0,0,8vh);
+			@include calc_top(-1vh);
+			@include boxShadow-sm;
+
+			position: relative; border: 1px solid #7f7f7f;
+			background: #2c2c2c url('#{$img_common}/ico-add.png') 0 0 no-repeat;
+			background-size: cover; font-size: 0;
+
+			&:hover {
+				border-color: $point-color;
+			}
+		}
+	}
+
+    .userpoint {
+        &:before {
+            background: url('#{$img_common}/broPoint.png') 0 0 no-repeat;
+            background-size: cover;
+        }
+	}
+
+	.userpoint,
+	.userCash {
+		@include calc_fz(14vh);
+
+		&:before {
+			@include calc_w(28vh);
+            @include calc_h(28vh);
+            @include calc_mg(0,5vh,0,0);
+            content: ''; display: inline-block; vertical-align: middle;
+		}
+	}
+
+	.userid {
+		@include calc_fz(20vh);
+
+		.profile {
+			@include calc_mg(0,12vh,0,0);
+		}
+	}
+}
+
+.userserver {
+	@include calc_w(100vh);
+	position: relative;
+
+	.selectValue {
+		position: relative;
+		cursor: pointer;
+
+		&:before {
+			@include calc_w(25vh);
+			@include calc_h(25vh);
+			@include calc_mg(0,5vh,0,0);
+
+			content: ''; display: inline-block; vertical-align: middle;
+			background: url('#{$img_common}/ico-earth.png') 0 0 no-repeat;
+			background-size: cover;
+		}
+
+		&:after {
+			@include calc_right(10vh);
+			@include calc_bottom(0);
+			@include calc_border(5vh, solid, transparent);
+
+			content: ''; display: block; position: absolute; top: 50%; width: 0; height: 0;
+			border-top-color: #fff; border-bottom-width: 0; transform: translate(0,-50%);
+        }
+	}
+
+	.serviceList {
+		@include calc_translate(-50%,0vh);
+
+		position: absolute; top: 0; left: -75%;
+		opacity: 0; pointer-events: none;
+		animation: serviceListHide 0.2s forwards;
+
+		&.isView {
+			opacity: 1; pointer-events: auto;
+			animation: serviceListShow 0.2s forwards;
+		}
+		ul {
+			position: relative; z-index: 10;
+			li * {pointer-events: none;}
+		}
+	}
+
+	&:hover .serviceList {
+		//display: block;
+	}
+
+	.activator {
+		@include calc_h(50vh);
+		display: block; width: 100%;
+		position: absolute; top: 0; left: 0; background-color: $active_color;
+	}
+}
+
+@keyframes serviceListShow {
+    from {
+		@include calc_translate(-50%,0vh);
+        opacity: 0;
+    }
+    to {
+		@include calc_translate(-50%,80vh);
+        opacity: 1;
+    }
+}
+
+@keyframes serviceListHide {
+    from {
+		@include calc_translate(-50%,80vh);
+        opacity: 1;
+    }
+    to {
+		@include calc_translate(-50%,0vh);
+        opacity: 0;
+    }
+}
+
+.useroption {
+	@include calc_w(50vh);
+	position: relative;
+	cursor: pointer;
+
+	.serviceList {
+		@include calc_w(152vh);
+
+		li {
+			@include calc_fz(18vh);
+		}
+	}
+}
+/* //USERINFO */
+
+
+.serviceList {
+	@include calc_w(262vh);
+	&.arrow-top:after {
+		left: 50%;
+		transform: translate(-50%,0);
+
+	}
+	box-sizing: border-box; position: absolute; left: 50%; border: 1px solid $point_color; line-height: 1;
+	transform: translate(-50%,0);
+
+	li {
+		@include calc_lh(50vh);
+		@include calc_pd(0vh,20vh,0vh,20vh);
+		@include calc_fz(12vh);
+
+		position: relative; margin: 0 0 -1px 0; color: #b0b0b0;
+		border-top: 1px solid #484848; border-bottom: 1px solid #484848; cursor: pointer;
+		transition: background-color 0.5s ease-in, border-color 0.5s ease-out;
+
+		&:first-child {border-top: none;}
+		&:last-child {border-bottom: none;}
+		&:after {content: ''; display: block; height: 0; clear: both;}
+
+		.mark {
+			@include calc_w(34vh);
+			@include calc_fz(20vh);
+			display: inline-block; color: #fff;
+		}
+
+		.antenna {
+			@include calc_pd(0,0,0,10vh);
+			float: right;
+			&:before {
+				@include calc_w(19vh);
+				@include calc_h(21vh);
+				@include calc_mg(-5vh,10vh,0,0);
+
+				content: ''; display: inline-block; vertical-align: middle;
+				background: url() 0 0 no-repeat; background-size: cover;
+			}
+			&.level0:before {background-image: url('#{$img_common}/ico-antenna0.png');}
+			&.level1:before {background-image: url('#{$img_common}/ico-antenna1.png');}
+			&.level2:before {background-image: url('#{$img_common}/ico-antenna2.png');}
+			&.level3:before {background-image: url('#{$img_common}/ico-antenna3.png');}
+		}
+
+		&.on,
+		&:hover {
+			z-index: 10; background-color: $active_color; border-color: $point_color;
+			.mark {color: $point_color;}
+			color: #fff;
+		}
+	}
+
+	button {
+		@include calc_h(40vh);
+		@include calc_fz(16vh);
+
+		width: 100%; text-align: center; color: #fff; font-weight: bold;
+		background-color: $point_color;
+	}
+}
+
+
+/* OPTION 창 - serviceList 클래스를 참조하고 있음*/
+.optionBox {
+    display: none;
+
+	ul {
+		li {
+            @include calc_fz(20vh);
+
+            &:hover {
+                z-index: 10; background-color: rgba(255,255,255,0.3); border-color: $border_color;
+                color: #fff;
+            }
+		}
+	}
+}
+
+.layerOpen {
+	display: block;
+	transform-origin: center;
+	transform: translate(-50%, -50%);
+}

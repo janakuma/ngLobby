@@ -1,0 +1,348 @@
+﻿@import './bro.variable.scss';
+$img: '/dist/images/steamfriend';
+$thum_h: 43vh;
+
+.steamFriend * {vertical-align: middle;}
+.steamFriend {
+    @include calc_bottom(36vh);
+    @include calc_left(36vh);
+    position: absolute;
+
+    .steamSignal {
+        @include calc_w($thum_h);
+        @include calc_h($thum_h);
+
+        position: relative; display: inline-block;
+        background: url('#{$img_common}/ico-signal.png') 0 0 no-repeat;
+        background-size: cover; box-sizing: border-box;
+
+        .tip {
+            @include calc_mg(0,0,55vh,0);
+            left: 0; bottom: 0; transform: translate(0,0); text-align: center;
+
+            i {
+                @include calc_fz(15vh);
+                color: $point_color;
+            }
+        }
+
+        &:hover {
+            .tip {display: block;}
+        }
+    }
+
+    .steamGroup {
+        @include calc_mg(0,15vh,0,0);
+        display: inline-block; background-color: #212121;
+
+        .steamMulti {
+            @include calc_w(90vh);
+            @include calc_h($thum_h);
+            @include calc_lh($thum_h);
+            @include calc_pd(0,0,0,16vh);
+            @include calc_fz(18vh);
+
+            cursor: pointer;
+
+            box-sizing: border-box; display: inline-block; color: $point-color;
+
+            &:before {
+                @include calc_w(29vh);
+                @include calc_h(19vh);
+                @include calc_mg(0,10vh,0,0);
+
+                content: ''; display: inline-block; vertical-align: middle;
+                background: url('#{$img_common}/ico-multi.png') 0 0 no-repeat; background-size: cover;
+            }
+        }
+
+        /* Common - steamGroup  */
+        .steamSignal,
+        .steamMulti {margin-right: -1px;}
+
+        .steamSignal,
+        .steamMulti,
+        .slot .thum {border: 1px solid $border_color;}
+
+        .steamSingle,
+        .steamGroup {
+            @include boxShadow-sm();
+        }
+    }
+
+    .steamSingle {display: inline-block;}
+
+    .btn-leave {
+        @include calc_w(120vh);
+        @include calc_h($thum_h);
+        @include calc_mg(0,0,0,15vh);
+        @include calc_fz(18vh);
+        @include calc_translate(40vh,0);
+
+        transition: all 0.4s; background-color: $bg_black4; border: 1px solid $border_color; opacity: 0;
+        pointer-events: none;
+
+        &:hover {
+            border: 1px solid #ffc600;
+            opacity: 1;
+            color: #ffc600;
+            background-color: rgba(255, 198, 0, 0.3);
+        }
+
+        &.on {
+            @include calc_translate(0,0);
+            opacity: 1; pointer-events: auto;
+        }
+    }
+}
+
+$steamLayer_top: 400vh;
+/* INVITATIONS */
+.invitations {
+    @include calc_w(296vh);
+    //@include calc_top($steamLayer_top);
+    @include calc_left(380vh);
+    position: absolute;
+    opacity: 0;
+
+    &.arrow-left:after {
+        @include calc_top(20vh);
+    }
+
+    animation: slideHide 0.4s forwards;
+    pointer-events: none;
+}
+
+.invitations.show {
+    pointer-events: auto;
+    animation: slideShow 0.4s forwards;
+}
+
+@keyframes slideShow {
+    from {
+        @include calc_top($steamLayer_top + 100);
+        opacity: 0;
+    }
+    to {
+        @include calc_top($steamLayer_top);
+        opacity: 1;
+    }
+}
+
+@keyframes slideHide {
+    from {
+        @include calc_top($steamLayer_top);
+        opacity: 1;
+    }
+    to {
+        @include calc_top($steamLayer_top + 100);
+        opacity: 0;
+    }
+}
+
+/* STEAMFRIEND-LIST */
+.steamFriend-list {
+    @include calc_w(326vh);
+    @include calc_h(579vh);
+    @include calc_bottom(101vh);
+    @include calc_left(36vh);
+
+    display: none;
+    position: absolute; box-sizing: border-box;
+
+    &.arrow-bottom:after {
+        @include calc_left(85vh);
+    }
+
+    /* LIST */
+    .list {
+        position: relative;
+        margin-top: -1px;
+
+        h4 {
+            @include calc_pd(5vh,20vh,5vh,20vh);
+            @include calc_fz(16vh);
+
+            border-top: 1px solid #898989;
+            border-bottom: 1px solid #898989;
+            cursor: pointer;
+
+            &:hover,
+            &.active {
+                border-color: $point_color;
+            }
+            &.active {background-color: $active_color;}
+            &.deactive {background-color: #0f0f0f;}
+        }
+    }
+}
+
+
+.addFriend {
+    @include calc_w(326vh);
+    display: none; position: absolute; box-sizing: border-box;
+}
+
+/* COMMON - Header */
+.cmptHeaer {
+    @include calc_pd(16vh,20vh,16vh,20vh);
+    position: relative; border-bottom: 1px solid #898989;
+
+    h3 {
+        @include calc_fz(26vh);
+        line-height: 1; color: $point_color;
+    }
+
+    > span {
+        @include calc_top(12vh);
+        @include calc_right(10vh);
+        position: absolute;
+        .fa {
+            @include calc_mg(0,0,0,10vh);
+            position: relative; color: #fff;
+        }
+
+        .badge {
+            @include calc_top(-13vh);
+            @include calc_right(-10vh);
+            @include calc_minw(20vh);
+            @include calc_lh(20vh);
+            @include calc_fz(12vh);
+            @include calc_radius(12vh,12vh,12vh,12vh);
+            @include calc_pd(0,5vh,0,5vh);
+
+            position: absolute; text-align: center; box-sizing: border-box;
+            display: inline-block; background-color: #990000;
+        }
+    }
+}
+
+/* SEARCH AREA */
+.searchArea {
+    @include calc_mg(12vh,0,0,0);
+    display: flex; border: 1px solid #898989;
+
+    .search,
+    button {@include calc_h(28vh);}
+
+    .search {
+        @include calc_fz(14vh);
+        box-sizing: border-box; display: block; flex: 1; background-color: #1b1b1b; color: #fff;
+    }
+
+    button {
+        @include calc_w(28vh);
+        @include calc_h(28vh);
+        @include calc_fz(14vh);
+        border-left: 1px solid #898989; background: #0b0b0b;
+    }
+}
+/* //SEARCH AREA */
+
+/* COMMON - LIST */
+.userList {
+    overflow: hidden; width: 100%; transition: height 0.4s;
+
+    ul {
+        li {
+            * {vertical-align: middle;}
+            @include calc_pd(8vh,20vh,8vh,20vh);
+            position: relative; box-sizing: border-box; border-top: 1px solid #484848;
+
+            .profile {
+                @include calc_mg(0,12vh,0,0);
+                @include boxShadow();
+            }
+
+            strong {
+                @include calc_pd(6vh,0,0,0);
+                display: inline-block; font-weight: normal;
+            }
+
+            .option {
+                @include calc_right(20vh);
+                position: absolute; top: 50%; transform: translate(0,-50%);
+
+                .fa {
+                    @include calc_mg(0,0,0,10vh);
+                }
+            }
+
+            .tip {
+                @include calc_right(80vh);
+                top: 50%; transform: translate(0,-50%); text-align: right;
+            }
+        }
+
+        li:hover {
+            .profile img {
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    &.team {
+        .fa-plus-circle {display: none;}
+    }
+
+    &.online {
+        .fa-minus-circle {display: none;}
+    }
+
+    &.offline {
+        opacity: 0.5;
+        .profile img {
+            filter:grayscale(1);
+        }
+        .option {display: none;}
+    }
+}
+
+/* COMMON - SLOT: 스팀 유저 사진이 들어가는 부분 */
+.slot,
+span.thum {
+    @include calc_w($thum_h);
+    @include calc_h($thum_h);
+    display: inline-block;
+}
+
+.slot {
+    box-sizing: border-box; position: relative; margin: 0 -1px 0 0;
+    background: url('#{$img_common}/ico-steamAdd.png') center center no-repeat;
+    background-size: cover;
+
+    span.thum {
+        overflow: hidden; border: 1px dotted $border_color;
+        &.join {position: relative; z-index: 5; border: 1px solid #fff;}
+        img {width: 100%; transition: all 0.3s;}
+    }
+
+    &:after {
+        content:''; box-sizing: border-box; display: none; position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0; border: 2px solid $point_color; z-index: 10;
+    }
+
+    &.ready {
+        &:after {
+            background: url('#{$img_common}/ico-ready.png') 0 0 no-repeat;
+            background-size: cover; display: block;
+        }
+    }
+
+    &:hover {
+        &:after {display: block;}
+        img {transform: scale(1.2) !important;}
+        .tip {display: block;}
+    }
+
+    .tip {
+        @include calc_mg(0,0,55vh,0);
+        left: 50%; transform: translate(-50%,0); bottom: 0;
+    }
+    > .tip.arrow-bottom:after {left: 50%; transform: translate(-50%,0);}
+}
+
+.steamSingle {
+    .slot .thum img {opacity: 0; transform: scale(0.4);}
+    .slot .thum.on img {opacity: 1; transform: scale(1);}
+}

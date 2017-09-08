@@ -1,0 +1,78 @@
+﻿@import './bro.variable.scss';
+
+$img: '/dist/images/inviteTeam';
+
+.chat {
+    @include calc_bottom(36vh);
+    @include calc_w(478vh);
+
+    position: absolute; left: 50%; transform: translate(-50%,0);
+    background-color: $bg-black5;
+
+    .hiddenArea {
+        transition: all 0.3s; overflow: hidden; width :100%; height: 0;
+        opacity: 0;
+    }
+    .tabBlock {
+        display: flex;
+
+        button {
+            @include calc_h(28vh);
+            @include calc_fz(13vh);
+            flex: 1; border: 1px solid #898989; border-bottom: 1px solid $point_color;
+            color: #b0b0b0;
+
+            &:hover,
+            &.on {
+                position: relative;
+                border-color: $point-color;
+                background-color: $bg_black5;
+                border-bottom-color: transparent;
+                color: #fff;
+            }
+        }
+    }
+
+    .chat-message {
+        @include calc_pd(13vh,20vh,13vh,20vh);
+        border-top: none; background-color: $bg_black5;
+
+        ul {
+            li {
+                @include calc_mg(4vh,0,0,0);
+                line-height: 1.4;
+
+                &:not(.notice) {
+                    @include calc_fz(13vh);
+                    font-family: 'Ruda' !important;
+                    i {
+                        @include calc_pd(0,6vh,0,0);
+                        display: inline-block; color: #07f1c2;
+                    }
+                }
+                &.notice {color: $point-color;}
+            }
+        }
+    }
+
+    .chat-input {
+        @include calc_h(28vh);
+
+        position: relative; z-index: 1; margin: -1px 0 0 0; border: 1px solid #fff;
+
+        .typeArea {
+            @include calc_w(425vh);
+            @include calc_lh(28vh);
+            box-sizing: border-box; color: #fff;
+        }
+
+        button {
+            @include calc_w(20vh);
+            @include calc_h(20vh);
+            @include calc_right(3vh);
+
+            position: absolute; top: 50%; transform: translate(0,-50%);
+            border: 1px solid #fff; background-color: #5b5b5b;
+        }
+    }
+}

@@ -1,0 +1,67 @@
+<!-- USERMATCH -->
+<article class="usermatch">
+
+    <!-- CUSTOM MATCH -->
+    <div class="match custom active">
+        CUSTOM MATCH
+        <p class="tip lg arrow-right" style="display: none">
+        You can no longer invite<br/>more people.
+        </p>
+    </div>
+    <!-- //CUSTOM MATCH -->
+
+    <!-- TEAM MATCH -->
+    <div id="matchTeam" class="match team" data-modeName="">
+        <h3 class="match-label">TEAM MATCH</h3>
+        <div class="selectMatch">
+
+        <button class="on solo" onclick="selectMatch('solo')">
+            <p>
+                <span>
+                <img src="/assets/images/common/match-solo.png" alt="SOLO"/>
+                SOLO
+                </span>
+            </p>
+        </button>
+
+        <button class="duo" onclick="selectMatch('duo')">
+            <p>
+            <span>
+                <img src="/assets/images/common/match-duo.png" alt="DUO"/>
+                DUO
+            </span>
+            </p>
+        </button>
+
+        <button class="squad" onclick="selectMatch('squad')">
+            <p>
+            <span>
+                <img src="/assets/images/common/match-squad.png" alt="squad"/>
+                SQUAD
+            </span>
+            </p>
+        </button>
+        </div>
+
+        <div id="btn-random">
+            <button class="btn-random" onclick="teamRandom()">
+            FIND RANDOM TEAMMATE
+            </button>
+        </div>
+
+
+        <p class="tip lg arrow-right" style="display: none">
+        You can no longer invite<br/>more people.
+        </p>
+    </div>
+    <!-- //TEAM MATCH -->
+
+    <!-- PLAYMODE -->
+    <div class="match cursor playMode">
+        <span><i class="modeName">SOLO</i> MODE</span>
+        <p>PLAY</p>
+    </div>
+    <!-- //PLAYMODE -->
+
+</article>
+<!-- //USERMATCH -->

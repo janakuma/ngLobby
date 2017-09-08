@@ -1,0 +1,467 @@
+<div id="wrapper" class="wrapper">
+
+  <div class="rain"></div>
+
+  <!-- HEADER -->
+  <header class="bro-header clearfix">
+    <h1 class="logo"><img src="/assets/images/common/pubg-logo.png" alt="PUBG"/></h1>
+
+    <nav class="bro-gnb">
+        <ul class="clearfix">
+            <li>
+                <a href="">home</a>
+            </li>
+            <li>
+                <a href="">character</a>
+            </li>
+            <li>
+                <a href="">rewards</a>
+            </li>
+        </ul>
+        <i id="menuBar" class="activator animate"></i>
+    </nav>
+
+    <!-- USER INFO -->
+    <section class="bro-userinfo">
+
+      <!-- bro cash -->
+      <div class="block userCash" style="display: none;">
+        <em>110</em>
+        <button class="addPoint">Add point</button>
+      </div>
+      <!-- //bro cash -->
+
+      <!-- bro Point -->
+      <div class="block userpoint"><em>1,000</em></div>
+      <!-- bro Point -->
+
+      <!-- userid -->
+      <div class="block userid">
+        <figure class="profile sm"><img src="/assets/images/_profile.jpg" alt=""/></figure>BLUEHOLE
+      </div>
+      <!-- //userid -->
+
+      <!-- userserver -->
+      <div class="block userserver">
+        <p class="selectValue pointColor" onmouseenter="userserver('show');">NA</p>
+
+        <!-- <div class="serviceList lineBlock-c arrow-top isView"> -->
+        <div id="userServerLlist" class="serviceList lineBlock-c arrow-top"  onmouseleave="userserver('hide');">
+          <ul>
+            <li>
+              <strong class="mark">NA</strong>
+              <span>NORTH AMERICA</span>
+              <i class="antenna level0">200ms</i>
+            </li>
+
+            <li>
+              <strong class="mark">EU</strong>
+              <span>EUROPEAN UNION</span>
+              <i class="antenna level0">200ms</i>
+            </li>
+
+            <li>
+              <strong class="mark">AS</strong>
+              <span>ASIA</span>
+              <i class="antenna level1">200ms</i>
+            </li>
+
+            <li>
+              <strong class="mark">OC</strong>
+              <span>OCEANIA</span>
+              <i class="antenna level2">200ms</i>
+            </li>
+
+            <li>
+              <strong class="mark">SA</strong>
+              <span>SOUTH AMERICA</span>
+              <i class="antenna level3">200ms</i>
+            </li>
+          </ul>
+          <span
+            class="activator animate" style="top: 0">
+          </span>
+        </div>
+      </div>
+      <!-- //userserver -->
+
+      <!-- useroption -->
+      <div class="block useroption" onclick="showModal('#userOption');">
+        <p class="fa fa-bars fa-lg"></p>
+      </div>
+      <!-- useroption -->
+    </section>
+    <!-- //USER INFO -->
+    <!-- //user info -->
+  </header>
+  <!-- //HEADER -->
+
+  <app-test></app-test>
+
+  <!-- INVITE TEAM -->
+  <article class="inviteTeam">
+    <nav class="tabBlock">
+      <button class="on">ID 11223</button>
+      <button>ID 112236</button>
+      <button>ID 112236</button>
+      <button>ID 11223</button>
+    </nav>
+
+    <div class="invite-message lineBlock-c clearfix">
+      <figure class="profile mg"><img src="/assets/images/_profile.jpg" alt=""/></figure>
+      <p>
+        <span class="pointColor">ALOHADANCETV</span> has applied for a team invitation.
+      </p>
+    </div>
+
+    <div class="group-btn lineBlock-c">
+      <button class="btn sm able">OK</button>
+      <button class="btn sm disable">CANCEL</button>
+    </div>
+  </article>
+  <!-- //INVITE TEAM -->
+
+
+  <usermatch></usermatch>
+
+  <!-- USERMATCH -->
+  <article class="usermatch" style="display: none;">
+
+    <!-- CUSTOM MATCH -->
+    <div class="match custom active">
+      CUSTOM MATCH
+      <p class="tip lg arrow-right" style="display: none">
+        You can no longer invite<br/>more people.
+      </p>
+    </div>
+    <!-- //CUSTOM MATCH -->
+
+    <!-- TEAM MATCH -->
+    <div id="matchTeam" class="match team" data-modeName="">
+      <h3 class="match-label">TEAM MATCH</h3>
+      <div class="selectMatch">
+
+        <button class="on solo" onclick="selectMatch('solo')">
+          <p>
+              <span>
+                <img src="/assets/images/common/match-solo.png" alt="SOLO"/>
+                SOLO
+              </span>
+          </p>
+        </button>
+
+        <button class="duo" onclick="selectMatch('duo')">
+          <p>
+            <span>
+              <img src="/assets/images/common/match-duo.png" alt="DUO"/>
+              DUO
+            </span>
+          </p>
+        </button>
+
+        <button class="squad" onclick="selectMatch('squad')">
+          <p>
+            <span>
+              <img src="/assets/images/common/match-squad.png" alt="squad"/>
+              SQUAD
+            </span>
+          </p>
+        </button>
+      </div>
+
+      <div id="btn-random">
+          <button class="btn-random" onclick="teamRandom()">
+            FIND RANDOM TEAMMATE
+          </button>
+      </div>
+
+
+      <p class="tip lg arrow-right" style="display: none">
+        You can no longer invite<br/>more people.
+      </p>
+    </div>
+    <!-- //TEAM MATCH -->
+
+    <!-- PLAYMODE -->
+    <div class="match cursor playMode">
+      <span><i class="modeName">SOLO</i> MODE</span>
+      <p>PLAY</p>
+    </div>
+    <!-- //PLAYMODE -->
+
+  </article>
+  <!-- //USERMATCH -->
+
+  <!-- STEAMFRIEND -->
+  <!-- STEAMFRIEND LIST -->
+  <article class="steamFriend-list lineBlock-c arrow-bottom">
+    <header class="cmptHeaer">
+      <h3>FRIENDS (<i class="maxCount">0</i>)</h3>
+
+      <span class="option">
+        <button class="fa fa-user-plus fa-lg" onclick="showModal('#addFriend')"></button>
+        <button class="fa fa-envelope fa-lg" onclick="invitations();">
+          <i class="badge">99</i>
+        </button>
+      </span>
+
+      <section class="searchArea">
+        <input type="text" class="search" placeholder="SEARCH. USER ID" />
+        <button class="fa fa-undo fa-lg"></button>
+      </section>
+    </header>
+
+    <div class="scroll list">
+
+      <h4 class="team">TEAM (<i>0</i>)</h4>
+      <section id="group-team" class="userList team">
+        <ul>
+        </ul>
+      </section>
+
+      <h4 class="active">ONLINE (<i>0</i>)</h4>
+      <section id="group-online" class="userList online">
+        <ul>
+          <!-- <li>
+            <figure class="profile mg"><img src="/assets/images/_profile6.jpg" alt=""/></figure>
+            <strong>HANZO</strong>
+
+            <div class="option">
+              <button class="fa fa-plus-circle fa-lg"></button>
+              <button class="fa fa-info-circle fa-lg"></button>
+            </div>
+
+            <p class="tip sm arrow-right" style="display: none">
+              You can no longer invite<br/>more people.
+            </p>
+          </li> -->
+        </ul>
+      </section>
+
+      <h4 class="deactive">OFFLINE (<i>0</i>)</h4>
+      <section id="group-offline" class="userList offline">
+        <ul>
+          <!-- <li>
+            <figure class="profile mg"><img src="/assets/images/_profile6.jpg" alt=""/></figure>
+            <strong>HANZO</strong>
+
+            <div class="option">
+              <button class="fa fa-plus-circle fa-lg"></button>
+              <button class="fa fa-info-circle fa-lg"></button>
+            </div>
+
+            <p class="tip sm arrow-right" style="display: none">
+              You can no longer invite<br/>more people.
+            </p>
+          </li> -->
+        </ul>
+      </section>
+
+    </div>
+
+  </article>
+  <!-- //STEAMFRIEND LIST -->
+
+  <!-- INVITATIONS -->
+  <article class="invitations lineBlock-c arrow-left">
+    <header class="cmptHeaer">
+      <h3>INVITATIONS</h3>
+    </header>
+
+    <div class="scroll list">
+      <section class="userList">
+        <ul>
+          <li>
+            <figure class="profile mg"><img src="/assets/images/_profile.jpg" alt=""/></figure>
+            <strong>id11121431231</strong>
+
+            <div class="option">
+              <button class="fa fa-check-circle fa-lg allow"></button>
+              <button class="fa fa-times-circle fa-lg refuse"></button>
+            </div>
+          </li>
+
+          <li>
+              <figure class="profile mg"><img src="/assets/images/_profile.jpg" alt=""/></figure>
+              <strong>id11121431231</strong>
+
+              <div class="option">
+                  <button class="fa fa-check-circle fa-lg allow"></button>
+                  <button class="fa fa-times-circle fa-lg refuse"></button>
+                </div>
+            </li>
+        </ul>
+      </section>
+    </div>
+  </article>
+  <!-- //INVITATIONS -->
+
+  <!-- STEAMFRIEND THUMNAIL -->
+  <article class="steamFriend clearfix">
+    <section class="steamGroup" >
+      <div class="steamSignal">
+        <p class="tip lg arrow-bottom">
+          <i>Receive team invitation</i><br/>
+          Press to change status
+        </p>
+      </div>
+      <div class="steamMulti maxCount" onclick="steamList()">0</div>
+
+      <div class="slot">
+        <span class="thum"><img src="/assets/images/_profile.jpg" alt=""></span>
+      </div>
+    </section>
+
+    <section class="steamSingle">
+
+      <!-- 팀원이 레디시 slot ready 클래스 추가 -->
+      <div class="slot" onclick="steamList()">
+        <span class="thum"><img src="" alt=""></span>
+        <!-- <p class="tip sm arrow-bottom"></p> -->
+      </div>
+
+      <div class="slot" onclick="steamList()">
+          <span class="thum"><img src="" alt=""></span>
+        <!-- <p class="tip sm arrow-bottom"></p> -->
+      </div>
+
+      <div class="slot" onclick="steamList()">
+          <span class="thum"><img src="" alt=""></span>
+        <!-- <p class="tip sm arrow-bottom"></p> -->
+      </div>
+    </section>
+
+    <button class="btn-leave" onclick="leaveTeam();">LEAVE TEAM</button>
+  </article>
+  <!-- //STEAMFRIEND THUMNAIL -->
+
+  <!-- ADD FRIENDS -->
+  <article id="addFriend" class="addFriend lineBlock-c modalCenter">
+    <header class="cmptHeaer">
+      <h3>ADD FRIENDS</h3>
+
+      <section class="searchArea">
+        <input type="text" class="search" placeholder="Please enter your friend nickname" />
+        <button class="fa fa-search fa-lg"></button>
+      </section>
+    </header>
+
+    <div class="scroll list">
+      <section class="userList">
+        <ul>
+          <li>
+            <figure class="profile mg"><img src="/assets/images/_profile.jpg" alt=""/></figure>
+            <strong>id11121431231</strong>
+
+            <div class="option">
+              <button class="fa fa-ban fa-lg"></button>
+              <button class="fa fa-times-circle fa-lg"></button>
+              <button class="fa fa-check-circle fa-lg"></button>
+              <button class="fa fa-plus-circle fa-lg"></button>
+              <button class="fa fa-info-circle fa-lg"></button>
+            </div>
+          </li>
+
+          <li>
+            <figure class="profile mg"><img src="/assets/images/_profile.jpg" alt=""/></figure>
+            <strong>id11121431231</strong>
+          </li>
+
+          <li>
+            <figure class="profile mg"><img src="/assets/images/_profile.jpg" alt=""/></figure>
+            <strong>BBB</strong>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </article>
+  <!-- //ADD FRIENDS -->
+  <!-- //STEAMFRIEND -->
+
+  <article class="component chat">
+    <div class="hiddenArea">
+      <div class="containArea">
+        <nav class="tabBlock">
+          <button class="on">PUBG CHAT</button>
+          <button>TEAM CHAT</button>
+        </nav>
+
+        <div class="chat-message lineBlock-c">
+          <ul>
+            <li>
+              <i>[huong888]</i>Hello, front desk, how may I help you?
+            </li>
+            <li>
+              <i>[huong888]</i>Hello, front desk, how may I help you?
+            </li>
+            <li>
+              <i>[huong888]</i>Hello, front desk, how may I help you? Hello, front desk, how may I help you?
+            </li>
+            <li>
+              <i>[huong888]</i>Hello, front desk, how may I help you?
+            </li>
+            <li class="notice">HEECHANPark joined the team</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" class="typeArea" placeholder="Press Enter to start the conversation" />
+      <button>A</button>
+    </div>
+  </article>
+
+  <!-- <Inviteteam></Inviteteam>
+  <Usermatch></Usermatch>
+  <Steamfriend></Steamfriend>
+  <Chat></Chat> -->
+
+  <!-- SLIDE BANNER -->
+  <section class="banner" style="display: none;">
+      <div>Slide 1</div>
+      <div>Slide 2</div>
+      <div>Slide 3</div>
+      <div>Slide 4</div>
+      <div>Slide 5</div>
+  </section>
+  <!-- //SLIDE BANNER -->
+</div>
+
+<!-- POP-MESSAGE -->
+<div class="pop-message lineBlock-c" style="display: none">
+  GAME MATCH CANCELED
+</div>
+<!-- //POP-MESSAGE -->
+
+<!-- POP-ALERT -->
+<div class="pop-alert" style="display: none;">
+  <p>
+      Do you really want to leave the team?<br/>
+      Do you really want to leave the team?
+  </p>
+  <div class="group-btn dFlex">
+      <button class="flex1">YES</button>
+      <button class="flex1">NO</button>
+  </div>
+</div>
+<!-- //POP-ALERT -->
+
+<!-- OPTION 창  -->
+<div id="userOption" class="serviceList optionBox lineBlock-c white modalCenter">
+  <ul>
+    <li>SETTING</li>
+    <li>CREDITS</li>
+    <li>EXIT GAME</li>
+  </ul>
+</div>
+<!-- //OPTION 창  -->
+
+<div class="dim" onclick="showModal('.modalCenter');"></div>
+
+
+
+
+
+

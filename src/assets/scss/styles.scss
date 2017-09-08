@@ -1,0 +1,293 @@
+@charset "UTF-8";
+
+@import './bro.fonts.scss';
+@import './reset.scss';
+@import './broapp.scss';
+@import './userinfo.scss';
+@import './usermatch.scss';
+@import './inventory.scss';
+@import './inviteteam.scss';
+@import './steamfriend.scss';
+@import './chat.scss';
+@import './swiper.scss';
+@import './animate.scss';
+@import './magic.min.scss';
+
+
+/* Animate - 차후 지워야 할 이슈가 있음*/
+.animate {transition: all 0.3s;}
+
+
+.modalCenter {
+    position: absolute; top: 50%; left: 50%; z-index: 1000;
+    transform: translate(-50%, -50%);
+}
+
+.dim {
+    position: absolute; top: 0; left: 0; z-index: 900; width: 100%; height: 100vh; background-color: rgba(0,0,0,0.7);
+    opacity: 1; pointer-events: none;
+    transform: scaleY(0);
+
+    &.scaleInMotion {
+        animation: scaleInMotion 0.3s forwards;
+        pointer-events: auto;
+    }
+}
+
+@keyframes scaleInMotion {
+    from {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes scaleZoomMotion {
+    from {
+        opacity: 0;
+        transform: scale3d(0,0,0);
+    }
+    to {
+        opacity: 1;
+        transform: scale3d(0,0,0);
+    }
+}
+
+
+/* 투명 배경 엘리먼트 모음 */
+.usermatch .team,
+.serviceList,
+.invitations,
+.inviteTeam,
+.steamFriend-list,
+.addFriend,
+.pop-message {
+    @include boxShadow;
+    background-color: $bg_black75;
+}
+
+.cursor {cursor: pointer;}
+.clearfix:after {content: ''; display: block; height: 0; clear: both;}
+
+/* point-color */
+.pointColor {color: $point_color;}
+
+/* Button */
+.btn {
+    color: #fff;
+    &.sm {
+        @include calc_minw(85vh);
+        @include calc_mg(0,2vh,0,2vh);
+        @include calc_lh(30vh);
+        @include calc_fz(16vh);
+    }
+    &.md {
+        @include calc_lh(30vh);
+        @include calc_fz(20vh);
+    }
+    &.lg {
+        @include calc_lh(30vh);
+        @include calc_fz(24vh);
+    }
+
+    &.able {background-color: #990000;}
+    &.disable {background-color: #333;}
+}
+
+/* lineBlock과 TIP - 노란색 테두리와 삼각형 팁*/
+.lineBlock-c {
+    border: 1px solid $point_color;
+
+    &[class*="arrow-"] {
+        &:after {
+            @include calc_w(0vh);
+            @include calc_h(0vh);
+            @include calc_border(7vh, solid, transparent);
+            content: ''; display: block; position: absolute;
+        }
+
+        &.arrow-left:after {
+            @include calc_left(-7vh);
+            border-right-color: $point_color;
+            border-left-width: 0;
+        }
+
+        &.arrow-right:after {
+            @include calc_right(-7vh);
+            border-left-color: $point_color;
+            border-right-width: 0;
+        }
+
+        &.arrow-top:after {
+            @include calc_top(-7vh);
+            border-bottom-color: $point_color;
+            border-top-width: 0;
+        }
+
+        &.arrow-bottom:after {
+            @include calc_bottom(-7vh);
+
+            border-top-color: $point_color;
+            border-bottom-width: 0;
+        }
+    }
+}
+
+
+.lineBlock-c {
+    &.white {
+        border-color: $border_color;
+
+        &[class*="arrow-"] {
+
+            &.arrow-left:after {
+                border-right-color: $border_color;
+            }
+
+            &.arrow-right:after {
+                border-left-color: $border_color;
+            }
+
+            &.arrow-top:after {
+                border-bottom-color: $border_color;
+            }
+
+            &.arrow-bottom:after {
+                border-top-color: $border_color;
+            }
+        }
+    }
+}
+
+/* Profile - 프로필 사진 사이즈 별로 정리*/
+.profile {
+    @include calc_w(35vh);
+    @include calc_h(35vh);
+    @include boxShadow;
+
+    overflow: hidden; display: inline-block; border: 1px solid #fff; font-size: 0;
+
+    &.sm {
+        @include calc_w(27vh);
+        @include calc_h(27vh);
+    }
+
+    &.mg {
+        @include calc_w(38vh);
+        @include calc_h(38vh);
+    }
+
+    img {
+        width: 100%; vertical-align: top;
+        transition: all 0.3s;
+    }
+}
+
+/* TIP - 회색 테두리와 삼각형 팁*/
+.tip {
+    $tip_color: rgba(0,0,0,1);
+    @include boxShadow();
+    display: none; position: absolute; z-index: 20; color: #fff;
+    border: 1px solid $border_color; background-color: rgba(0,0,0,1); white-space: nowrap;
+
+    &.sm {
+        @include calc_pd(5vh,10vh,3vh,10vh);
+        @include calc_fz(13vh);
+    }
+    &.mg {}
+    &.lg {
+        @include calc_pd(10vh,17vh,10vh,17vh);
+        @include calc_fz(13vh);
+        line-height: 1.2;
+    }
+
+    &[class*="arrow-"] {
+        &:after {
+            @include calc_w(10vh);
+            @include calc_h(10vh);
+
+            content: ''; display: block; position: absolute;
+            background-color: rgba(0,0,0,1);
+            box-shadow: 1px 1px 0 0 $border_color;
+        }
+
+        &.arrow-left:after {
+            @include calc_left(-4.479vh);
+            top: 50%; transform: translate(0,-50%) rotate(135deg);
+        }
+
+        &.arrow-right:after {
+            top: 50%; right: 0; transform: translate(50%,-50%) rotate(-45deg);
+        }
+
+        &.arrow-top:after {
+            @include calc_top(-4.5vh);
+            left: 50%; transform: translate(-50%,0) rotate(-135deg);
+        }
+
+        &.arrow-bottom:after {
+            @include calc_bottom(-5vh);
+            transform: rotate(45deg);
+            border-top-color: $border_color;
+            border-bottom-width: 0;
+        }
+    }
+}
+
+.pop-message {
+    @include calc_fz(38vh);
+    @include calc_pd(12vh,25vh,12vh,25vh);
+
+    position: fixed; top: 50%; left: 50%; z-index: 100; transform: translate(-50%,-50%);
+}
+
+.pop-alert {
+    position: fixed; top: 50%; left: 50%; z-index: 100; transform: translate(-50%,-50%);
+    border: 1px solid #fff;
+
+    p {
+        @include calc_fz(24vh);
+        @include calc_pd(12vh,25vh,12vh,25vh);
+        line-height: 1.6; background-color: $bg-black75; text-align: center;
+    }
+
+    .group-btn {
+        border-top: 1px solid #fff;
+        background-color: $bg-black75;
+        button {
+            @include calc_h(36vh);
+            @include calc_lh(36vh);
+            @include calc_fz(18vh);
+
+            color: #b0b0b0; border: none;
+            &:hover {
+                color: #fff;
+                background-color: rgba(255,255,255,0.4);
+            }
+        }
+    }
+}
+
+.flex1 {flex:1;}
+.dFlex {display: flex;}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
