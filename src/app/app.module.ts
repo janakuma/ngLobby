@@ -4,8 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { UsermatchComponent } from './usermatch/usermatch';
 import { SteamFriends } from './steamFriends/steamFriends';
-
-
+import { MyFilterPipe } from './filter/MyFilterPiple';
 
 import { TestComponent } from './test/test';
 import { TestDetailComponent } from './test/test-detail';
@@ -15,6 +14,7 @@ import { TestDetailComponent } from './test/test-detail';
     AppComponent,
     UsermatchComponent,
     SteamFriends,
+    MyFilterPipe,
     TestComponent,
     TestDetailComponent
   ],
