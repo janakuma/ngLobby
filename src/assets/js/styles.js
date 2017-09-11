@@ -30,7 +30,7 @@ $(function() {
     });
 
 
-    /* STEAM FRIEND */
+    /* STEAM FRIEND
     var friends = [
         {
             'img': '_profile6.jpg',
@@ -78,8 +78,9 @@ $(function() {
 
         $('#group-'+friends[i].group).find('ul').append(list_item);
     });
+    */
 
-    /* 팀원 추가 */
+    /* 팀원 추가
     $('#group-online').on('click', '.fa-plus-circle', function() {
         var select_item = $(this).parents('li').html();
         var maxLimit = 3;
@@ -96,8 +97,9 @@ $(function() {
         matchMode();
         checkTeamSlot();
     });
+    */
 
-    /* 팀원 삭제 */
+    /* 팀원 삭제
     $('#group-team').on('click', '.fa-minus-circle', function() {
         var select_item = $(this).parents('li').html();
         $('#group-online').find('ul').append('<li>' + select_item + '</li>');
@@ -108,6 +110,7 @@ $(function() {
         matchMode();
         checkTeamSlot();
     });
+    */
 
     /* INVITATIONS 응하기 */
     $('.invitations .userList li')
