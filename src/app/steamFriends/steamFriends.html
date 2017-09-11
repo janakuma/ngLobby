@@ -20,49 +20,61 @@
     <div class="scroll list">
 
         <h4 class="team">TEAM (<i>0</i>)</h4>
-        <section id="group-team" class="userList team">            
-        <ul>            
-            <li *ngFor="let player of players | myfilter:'team'">
-                {{player.name}}
-            </li>               
+        <section id="group-team" class="userList team">
+        <ul>
+            <li *ngFor="let player of players | myfilter: 'team'">
+                <figure class="profile mg"><img src="/assets/images/{{player.img}}" alt=""/></figure>
+                <strong>{{player.name}}|{{player.group}}</strong>
+
+                <div class="option">
+                    <button class="fa fa-plus-circle fa-lg" (click)="onSelect(player)"></button>
+                    <button class="fa fa-minus-circle fa-lg" (click)="onSelect(player)"></button>
+                    <button class="fa fa-info-circle fa-lg"></button>
+                </div>
+
+                <p class="tip sm arrow-right" style="display: none">
+                    You can no longer invite<br/>more people.
+                </p>
+            </li>
         </ul>
         </section>
 
         <h4 class="active">ONLINE (<i>0</i>)</h4>
         <section id="group-online" class="userList online">
         <ul>
-            <!-- <li>
-            <figure class="profile mg"><img src="/assets/images/_profile6.jpg" alt=""/></figure>
-            <strong>HANZO</strong>
+            <li *ngFor="let player of players | myfilter: 'online'">
+                <figure class="profile mg"><img src="/assets/images/{{player.img}}" alt=""/></figure>
+                <strong>{{player.name}}</strong>
 
-            <div class="option">
-                <button class="fa fa-plus-circle fa-lg"></button>
-                <button class="fa fa-info-circle fa-lg"></button>
-            </div>
+                <div class="option">
+                    <button class="fa fa-plus-circle fa-lg" (click)="onSelect(player)"></button>
+                    <button class="fa fa-minus-circle fa-lg" (click)="onSelect(player)"></button>
+                    <button class="fa fa-info-circle fa-lg"></button>
+                </div>
 
-            <p class="tip sm arrow-right" style="display: none">
-                You can no longer invite<br/>more people.
-            </p>
-            </li> -->
+                <p class="tip sm arrow-right" style="display: none">
+                    You can no longer invite<br/>more people.
+                </p>
+            </li>
         </ul>
         </section>
 
         <h4 class="deactive">OFFLINE (<i>0</i>)</h4>
         <section id="group-offline" class="userList offline">
         <ul>
-            <!-- <li>
-            <figure class="profile mg"><img src="/assets/images/_profile6.jpg" alt=""/></figure>
-            <strong>HANZO</strong>
+            <li *ngFor="let player of players | myfilter: 'offline'">
+                <figure class="profile mg"><img src="/assets/images/_profile6.jpg" alt=""/></figure>
+                <strong>HANZO</strong>
 
-            <div class="option">
-                <button class="fa fa-plus-circle fa-lg"></button>
-                <button class="fa fa-info-circle fa-lg"></button>
-            </div>
+                <div class="option">
+                    <button class="fa fa-plus-circle fa-lg"></button>
+                    <button class="fa fa-info-circle fa-lg"></button>
+                </div>
 
-            <p class="tip sm arrow-right" style="display: none">
-                You can no longer invite<br/>more people.
-            </p>
-            </li> -->
+                <p class="tip sm arrow-right" style="display: none">
+                    You can no longer invite<br/>more people.
+                </p>
+            </li>
         </ul>
         </section>
 
@@ -114,6 +126,7 @@
             Press to change status
         </p>
         </div>
+        <!-- <div class="steamMulti maxCount" onclick="steamList()">0</div> -->
         <div class="steamMulti maxCount" onclick="steamList()">0</div>
 
         <div class="slot">

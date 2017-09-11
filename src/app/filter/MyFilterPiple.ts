@@ -1,31 +1,32 @@
-import { Pipe, PipeTransform } from '@angular/core';  
+import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({  
+@Pipe({
     name: 'myfilter'
-})  
-  
-export class MyFilterPipe implements PipeTransform {  
-    transform(value: any[], args: string): any {  
+})
+
+export class MyFilterPipe implements PipeTransform {
+    transform(value: any[], args: string): any {
         let findGroup = (args) => {
+            let filteredValues = [];
+
             for(let i = 0; value.length > i; i++) {
-                if(value[i].group == args) {                
-                    console.log(value[i]);
+                if(value[i].group == args) {
+                    //console.log(value[i]);
+                    filteredValues.push(value[i]);
                 }
-            } 
+            }
+            return filteredValues;
         }
-        
+
         switch(args) {
             case 'team':
-                findGroup('team');
-                break;
+                return findGroup('team');
 
             case 'online':
-                findGroup('online');
-                break;
+                return findGroup('online');
 
             case 'offline':
-                findGroup('offline');
-                break;            
-        }        
-    }  
+                return findGroup('offline');
+        }
+    }
 }
